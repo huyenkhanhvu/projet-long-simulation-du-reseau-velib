@@ -1,0 +1,11 @@
+05/12
+Le routage est l'idée de transmettre des données d'un point A a un point B a distance en utilisant des routeur, l'idée c'est de faire transmettre la donnée de point fixe en point fixe un peu comme des dépôts de poste pour amener une lettre d'un endroit a un autre (idée de base)
+
+y'a 2 algo principaux, celui RIP qui fonctionne a vecteur de distance et celui de OSPF qui fonction selon l'Etat de lien, utilisation du TTL pour éviter les paquet fantôme
+
+
+l'algo de gestion de congestion a pour but de réguler la vitesse d'envoie pour éviter la saturation, ca ce passe avec une signalisation au niveau du routeur pour pouvoir remonter l'info au terminal, pour éviter la congestion en régule la vitesse d'envoie pour éviter un "embouteillage" on a comme algo par exemple: 
+TCP Cubic : l'idée est de faire croître la fenêtre de congestion en utilisant une courbe pas linéaire qui vas ce basé sur la dernière perte, après une perte on vas regarder sur une courbe ou est notre perte, temps que notre fenêtre de congestion est inférieur a l'ancienne taille avant la perte on vas faire un remplissage assez lent pour éviter de remplir trop vite le réseaux, quand on s'approche de notre ancienne fenêtre de congestion on vas regarder si le réseaux peux supporter + que cette dernier, si oui on accélère les envoie, l'avantage c'est que ici sur des réseaux avec une large bande on a une croissance plus naturelle et qui est un peu plus adaptatif que d'autre modèle (apparemment reprend l'idée du modèle "Reno" qui lui était linéaire dans ca reprise après une fenêtre de congestion)
+
+
+pour la gestion de paquet on chercher a gérer la façon de traiter l'arriver des paquet dans le routeur quand plusieur arrive, ca permet de déterminer les prioritaire, l'ordre des paquet sortent, lesquelle seront supprimer et comment éviter d'avoir une congestion, pour les algo de planification on peut utiliser des algo comme FIFO ou PQ avec l'idée de donnée une priorité mais qui peux poser de problème pour cela avec une trio faible priorité qui ne pourrait ne jamais passer

@@ -1,0 +1,21 @@
+Comment modéliser et optimiser la régulation du trafic urbain, afin de réduire la congestion dans des zones sensibles ?
+
+Lors de notre dernière séance avec Madame Roupin, on a parler de la possibilité de ce pencher sur la question de la modélisation de trafic urbain, en s'intéressant a cette question on a 
+eu l'idée de développer la question sur l'optimisation de la régulation du trafic urbain pour des zones sensibles, on pourrait ce pencher sur cette question qui est assez importante dans 
+le réseaux de déplacement d'un ville car définie le trafic des véhicules sur certains moment clef d'un journées (par exemple lors d'un sorties d'école, l'afflux de véhicules peux créer des embouteillage dans une ville, pour cela il serait intéressant de regarder si des modification sur les feux sur cette période ne serait pas intéressant pour permettre d'optimiser le transit)
+
+Pour cela on peux représenter les feux avec des automates a horloge pour permettre de représenter des feux sur un carrefour, et de façon plus générale utiliser des graphes avec un système de flot pour représenter les différents transit des véhicules dans la ville. En se basant sur ces modélisation on pourrait ce pencher sur les question d'optimisation évoquer juste avant
+
+On pourrait se baser sur des cas "simple" pour un commencement (un pont, un carrefour) dans laquelle on essayera de modéliser et de définir la "congestion" en regardant des statistique, on pourras ensuite regarder comment optimiser ce problème pour éviter un problème de congestion ce qui nous permettra naturellement a s'intéresser a des cas plus complexe comme celui d'une ville ou les variables sont plus nombreuse et dont plus complexe a définir, des modélisation pourrait être utiliser pour visualiser les problèmes et une fois faites ce pencher sur la parties optimisation avec des algorithmes adéquat a appliquer ou en utilisant des feux "intelligent" (s'adaptant la l'heure, la date, etc... pour avoir des temps plus adéquat a la situation)
+
+On pourras aussi ajouter de la complexité en ajoutant le fait de devoir gérer différent types de transport (vélo, bus, tramway), pour les feux on peux essayer d'implémenter des système de machines Learning pour avoir des feux réactif intelligent au lieu de définition de périodes sensible.
+
+Pour la modélisation on pourrait utiliser différent outil de génération de graphes/automates (si vous avez des conseilles on est preneur bahaha) mais l'utilisation du python pour les différentes modélisation serait envisager.
+
+Quelque papier de recherches qu'on a vus sur des sujet similaire :
+
+https://www.researchgate.net/profile/Bouriachi-Fares/publication/257945968_Modelisation_d'un_Reseau_du_Trafic_Urbain_par_Automate_Hybride/links/5564c71608ae89e758fd972e/Modelisation-dun-Reseau-du-Trafic-Urbain-par-Automate-Hybride.pdf
+
+(+ dense mais avec pas mal de données)
+https://www.biblio.univ-evry.fr/theses/2009/2009EVRY0035.pdf
+
