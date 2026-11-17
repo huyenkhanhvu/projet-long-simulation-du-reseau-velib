@@ -1,53 +1,137 @@
-Simulateur de réseaux et traffic cycliste:
+# Simulation d'un réseau de vélos en libre-service
 
-Ce projet a pour origine un simulateur de réseaux qui a pour objectif final de simuler un parc de vélos connecter et les contraintes qui y sont lier dans la vie de tout les jours.
+Projet universitaire de simulation de réseau et de trafic cycliste, inspiré des problématiques d'un système de vélos en libre-service comme Vélib'.
 
-Description :
+## Présentation
 
-Ce projet est un simulateur de réseau permettant d’implémenter, tester et visualiser des algorithmes de routage, pour l'instant il implémente une version de l'algorithme "Distance Vector" avec des l'implémentation de "cycliste" ainsi qu'un moyen de visualiser le tout.
-Pour l'utilisation on a besoin d'installer une version de python récente (testé avec Python 3.12), certains bibliothèques python, notamment networkx et matplotlib. 
+Ce projet propose un simulateur permettant de tester et visualiser des algorithmes de routage sur un réseau, tout en intégrant des cyclistes et des scénarios de trafic. Il sert à observer l'évolution des itinéraires et des comportements du réseau au fil de la simulation.
 
-Le projet s'organise de la sorte pour l'insant :
+Le simulateur comprend actuellement une implémentation de l'algorithme "Distance Vector", plusieurs scénarios de test et un outil de visualisation.
 
-simulator
-├── algorithms
-│   ├── base.py
-│   ├── distance_vector.py
+**Périmètre :** la gestion des stocks de vélos en station et l'adaptation des coûts à l'heure de la journée font partie des évolutions envisagées, et non des fonctionnalités annoncées comme terminées.
+
+## Fonctionnalités
+
+- Simulation d'un réseau de routage.
+- Implémentation de l'algorithme "Distance Vector".
+- Intégration d'utilisateurs / cyclistes dans les simulations.
+- Scénarios de test portant notamment sur la topologie, les changements dynamiques et le trafic.
+- Visualisation de l'évolution de la simulation, tick par tick.
+- Paramétrage du nombre maximal de ticks et possibilité de désactiver l'affichage graphique.
+
+## Technologies
+
+- **Langage :** Python (projet testé avec Python 3.12)
+- **Bibliothèques :** NetworkX, Matplotlib
+
+## Installation
+
+### 1. Récupérer le dépôt
+
+```
+git clone https://github.com/huyenkhanhvu/projet-long-simulation-du-reseau-velib.git
+
+cd projet-long-simulation-du-reseau-velib
+```
+
+### 2. Préparer l'environnement Python
+
+```
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+python3 -m pip install networkx matplotlib
+```
+
+
+Sous Windows, l'activation s'effectue avec `.venv\Scripts\activate` dans l'invite de commandes.
+
+### 3. Se placer dans le dossier du simulateur
+
+Repérez le fichier `main.py` dans les sources du dépôt et ouvrez un terminal dans son dossier. Les commandes suivantes supposent que vous vous trouvez à cet emplacement.
+
+## Utilisation
+
+### Lancer la simulation par défaut
+
+
+`python3 main.py`
+
+
+Cette commande lance le scénario de trafic urbain par défaut.
+
+### Choisir un scénario
+
+
+`python3 main.py --test large`
+
+
+Scénarios indiqués dans le projet :
+
+| Scénario | Commande |
+| --- | --- |
+| Grand réseau | `python3 main.py --test large` |
+| Réseau dynamique | `python3 main.py --test dynamic` |
+| Topologie en ligne | `python3 main.py --test line` |
+| Coûts des liens | `python3 main.py --test link_costs` |
+| Topologie en anneau | `python3 main.py --test ring` |
+| Utilisateurs | `python3 main.py --test users` |
+| Trafic | `python3 main.py --test traffic` |
+
+### Options disponibles
+
+- `--ticks` : limite le nombre de ticks de la simulation.
+- `--no-visual` : exécute la simulation sans ouvrir le visualiseur.
+- `--random` : active une variante aléatoire du scénario de trafic.
+
+Exemple :
+
+
+`python3 main.py --test traffic --no-visual`
+
+
+### Navigation dans la visualisation
+
+Utilisez les flèches gauche et droite du clavier pour reculer ou avancer d'un tick.
+
+## Organisation du code
+
+Le README initial du projet décrit les modules suivants pour le simulateur :
+
+```text
+simulator/
+├── algorithms/
+│   ├── base.py
+│   └── distance_vector.py
 ├── main.py
 ├── message.py
 ├── network.py
 ├── router.py
-├── tests
-│   ├── test_dynamic_large_network.py
-│   ├── test_dynamic.py
-│   ├── test_line.py
-│   ├── test_link_costs.py
-│   ├── test_ring.py
-│   ├── test_traffic.py
-│   └── test_users.py
 ├── user.py
 ├── utils.py
-└── visualizer.py
+├── visualizer.py
+└── tests/
+    ├── test_dynamic_large_network.py
+    ├── test_dynamic.py
+    ├── test_line.py
+    ├── test_link_costs.py
+    ├── test_ring.py
+    ├── test_traffic.py
+    └── test_users.py
+```
 
-Lancer le scénario de trafic urbain, il suffit de faire la commande (elle lance le scénario par défaut):
-python3 main.py
 
-Lancer le scénario spécifique (plusieur possible "large","dynamic","line","link_costs","ring","users","traffic"):
-python3 main.py --test large
+## Perspectives d'amélioration
 
-L'option "--ticks" permet de mettre un nombre maximal de tick pour la simulation
-L'option "--no-visual" permet d'éviter l'ouverture du visualiser
-L'option "--random" permet d'avoir un version aléatoire du test traffic
+- [ ] Exploiter des jeux de données ouverts pour produire des scénarios plus réalistes.
+- [ ] Modéliser les stocks de vélos dans les stations, avec emprunts et restitutions.
+- [ ] Faire varier les coûts de déplacement en fonction de l'heure et de la saturation du trafic.
 
-Pour le visualizer on peux naviger a traver les ticks a l'aide des flêche "<-" et "->" qui permet d'avancer ou de reculer d'un tick
+## Auteurs
 
-Objectif Futur :
+Projet universitaire développé par **Vu Khanh Huyen** et **Goddet Lucas**.
 
-[] Utilisation de data disponible librement pour des test plus intéressant
-[] Mise en place de stock (faire en sorte simuler des dépôt de vélos avec un parc qui a un stock de vélos disponible, chaque user en prend 1 et le libére a l'autre place, si un user veux en prendre 1, un velo doit être dispo la ou il arrive)
-[] Mise en place de corrélation avec l'heure (temps réel ou simulation, objectif faire dépendre les coûts initiale selon la saturation des voie selon l'heure)
+## Référence
 
-Auteurs
-
-Projet réalisé dans le cadre d’un projet universitaire.
-Développé par : Vu Khanh Huyen & Goddet Lucas
+[Dépôt GitHub du projet](https://github.com/huyenkhanhvu/projet-long-simulation-du-reseau-velib)
